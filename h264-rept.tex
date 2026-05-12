@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage{graphicx}
+\usepackage{hyperref}
 \usetheme{default}
 \usecolortheme{dove}
 
@@ -120,22 +121,43 @@
 		\end{enumerate}
 	\end{frame}
 	
-	\begin{frame}{Результаты проведения вычислительного эксперимента}
+	\begin{frame}{Проведение вычислительного эксперимента}
 		Значения показательных характеристик исходного файла, содержащего видео:
 		\begin{itemize}
-			\item Кодировщик видео: hevc;
+			\item Кодек видео: HEVC (H.265);
 			\item Количество кадров в видео: 439;
-			\item Размер файла: 37011418 байтов.
+			\item Битрейт: 20213223 бит/с;
+			\item Информационный объём файла: 37011418 байтов.
 		\end{itemize}
 		
+		Значения показательных характеристик машины, на которой производилось кодирование:
+		\begin{itemize}
+			\item CPU: Intel Core Ultra 7 155H;
+			\item Информационный объём ОЗУ: 15825216 байтов;
+			\item ОС: Pop! OS 22.04 LTS.
+		\end{itemize}
+	\end{frame}
+		
+	\begin{frame}{Проведение вычислительного эксперимента}
 		\begin{table}[h]
 			\centering
+			\small
 			\begin{tabular}{|c|c|c|c|}
 				\hline
-				Кодек 		& Реализация  & Время кодирования & Размер файла \\ \hline
-				Текст слева & В центре    & Справа            & \\ \hline
-				Данные 1    & Данные 2    & Данные 3    	  & \\ \hline
+				Кодек 		 	& Реализация	& Время кодир-я, сек.	& Размер файла, Б \\ \hline
+				H.264			& libx264		& 51.55				  	& 37098002 \\ \hline
+				MPEG-2 Video 	& mpeg2video	& 13.54               	& 37476352 \\ \hline
+				MPEG-4 Part2    & mpeg4    		& 9.90					& 37400878 \\ \hline
+				AV1				& libaom1		& 14334.48				& 13728613	\\ \hline
+				VP8				& libvpx		& 78.65					& 19602287 \\ \hline
+				VP9				& libvpx-vp9	& 277.37				& 26440826 \\ \hline
+				MJPEG			& mjpeg			& 16.13					& 36295936 \\ \hline
+				ProRes			& prores\_ks	& 109.79				& 1687378350 \\ \hline
+				FFV1			& ffv1			& 23.74					& 404208749 \\ \hline
 			\end{tabular}
+			\caption{Таблица результатов кодирования}
 		\end{table}
+		
+		Исходный текст этой презентации, программы командной оболочки Bash для проведения эксперимента, инструкция для запуска программ опубликованы в репозитории на GitHub: \url{https://github.com/stepan-dolgorukov/h264-rept}.
 	\end{frame}
 \end{document}
